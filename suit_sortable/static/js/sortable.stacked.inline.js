@@ -20,7 +20,7 @@ django.jQuery(function sortableStackedInline() {
 		cursor: 'move',
 		update: function (event, ui) {
 			$('.inline-related:not(.last-related)').each(function (i) {
-				$('input[id$=position]', this).val(i + 1);
+				window.$('input[id$=position]', this).val(i + 1);
 			});
 		},
 	});
