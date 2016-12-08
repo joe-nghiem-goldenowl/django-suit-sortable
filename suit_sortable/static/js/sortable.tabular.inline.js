@@ -4,12 +4,12 @@ django.jQuery(function sortableTabularInline() {
 	var $context = window.$('.suit-sortable-tabular');
 	var $ = $context.find.bind($context);
 
+	// hide the position column
+	$('th:contains("Position"), td.field-position').hide();
+
 	if($('.inline-related input[name$=-INITIAL_FORMS]').val() <= 1){
 		return;
 	}
-
-	// hide the position column
-	$('th:contains("Position"), td.field-position').hide();
 
 	$('.inline-related .form-row.has_original').css('cursor', 'move');
 
