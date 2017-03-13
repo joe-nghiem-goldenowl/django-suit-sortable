@@ -18,6 +18,7 @@ django.jQuery(function sortableTabularInline() {
 	$('.inline-related').sortable({
 		axis: 'y',
 		items: '.form-row.has_original',
+		cancel: 'input,textarea,button,select,option,.sortable-cancel',
 		cursor: 'move',
 		update: function (event, ui) {
 			$('.inline-related .form-row.has_original').each(function (i) {

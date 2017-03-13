@@ -8,6 +8,7 @@ django.jQuery(function sortableChangelist() {
 	$('#result_list tbody').sortable({
 		axis: 'y',
 		items: 'tr',
+		cancel: 'input,textarea,button,select,option,.sortable-cancel',
 		cursor: 'move',
 		update: function (event, ui) {
 			items = $(this).find('tr').get();

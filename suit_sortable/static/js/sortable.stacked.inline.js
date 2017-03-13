@@ -18,6 +18,7 @@ django.jQuery(function sortableStackedInline() {
 	$('.inline-group').sortable({
 		axis: 'y',
 		items: '.inline-related:not(.last-related)',
+		cancel: 'input,textarea,button,select,option,.sortable-cancel',
 		cursor: 'move',
 		update: function (event, ui) {
 			$('.inline-related:not(.last-related)').each(function (i) {
