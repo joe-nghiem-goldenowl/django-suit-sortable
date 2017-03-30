@@ -1,30 +1,34 @@
 django.jQuery(function sortableTabularInline() {
-
-	// restrain jQuery context to `SortableTabularInline` elements
+	
+	// restrain local jQuery to `SortableTabularInline` elements
 	var $context = window.$('.suit-sortable-tabular');
 	var $ = $context.find.bind($context);
-
-	// hide the position column
+	
+	// hide the position columns
 	$('th:contains("Position"), td.field-position').hide();
-
-	if($('.inline-related input[name$=-INITIAL_FORMS]').val() <= 1){
-		return;
-	}
-
-	$('.inline-related .form-row.has_original').css('cursor', 'move');
-
-	$('.inline-related h2').append('<span class="description">Note: Drag &amp; drop rows to reorder. Save new inline row first</span>')
-
+	
+	// init sortable UI interaction
+	$('.inline-related .form-row').css('cursor', 'move');
 	$('.inline-related').sortable({
 		axis: 'y',
-		items: '.form-row.has_original',
+		items: '.form-row:not(.empty-form)',
 		cancel: 'input,textarea,button,select,option,.sortable-cancel',
-		cursor: 'move',
-		update: function (event, ui) {
-			$('.inline-related .form-row.has_original').each(function (i) {
+		cursor: 'move'
+	});
+	
+	// always update positions when table rows change
+	// (including Django `add another` or `remove`, and sortable drag & drop)
+	new MutationObserver(function onTableRowsChange() {
+			
+			// skip drag & drop interaction (jQuery integrates a placeholder at that time)
+			if ($('.ui-sortable-placeholder').length)
+				return;
+			
+			// update positions
+			$('.inline-related .form-row:not(.empty-form)').each(function (i) {
 				window.$('input[id$=position]', this).val(i + 1);
 			});
-		},
-	});
+		})
+		.observe($('tbody')[0], {childList: true});
 });
 
