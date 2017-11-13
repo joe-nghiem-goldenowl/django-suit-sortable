@@ -25,7 +25,7 @@ django.jQuery(function sortableTabularInline() {
 				return;
 			
 			// update positions
-			$('.inline-related .form-row:not(.empty-form)').each(function (i) {
+			$('.inline-related .form-row.has_original:not(.empty-form)').each(function (i) {
 				window.$('input.sortable', this).val(i + 1);
 			});
 		})
