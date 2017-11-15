@@ -19,6 +19,7 @@ django.jQuery(function sortableTabularInline() {
 	// always update positions when table rows change
 	// (including Django `add another` or `remove`, and sortable drag & drop)
 	$('tbody').each(function () {
+        var _this = this;
 	new MutationObserver(function onTableRowsChange() {
 			
 			// skip drag & drop interaction (jQuery integrates a placeholder at that time)
@@ -26,11 +27,10 @@ django.jQuery(function sortableTabularInline() {
 				return;
 			
 			// update positions
-			$('.inline-related .form-row.has_original:not(.empty-form)').each(function (i) {
+			$(_this).find('.form-row.has_original:not(.empty-form)').each(function (i) {
 				window.$('input.sortable', this).val(i + 1);
 			});
 		})
 		.observe(this, {childList: true});
 	})
 });
-
