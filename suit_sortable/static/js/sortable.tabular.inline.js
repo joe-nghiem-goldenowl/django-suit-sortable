@@ -6,6 +6,7 @@ django.jQuery(function sortableTabularInline() {
 	
 	// hide the position columns
 	$('th:contains("Position"), td.field-position').hide();
+	$('th:contains("Index"), td.field-index').hide();
 	
 	// init sortable UI interaction
 	$('.inline-related .form-row').css('cursor', 'move');
