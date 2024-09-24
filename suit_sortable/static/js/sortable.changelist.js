@@ -1,4 +1,4 @@
-django.jQuery(function sortableChangelist() {
+django.jQuery(function sortableChangelist($) {
 
 	// hide the position column
 	$('#result_list th:contains("Position")').hide();
@@ -23,4 +23,3 @@ django.jQuery(function sortableChangelist() {
 		}
 	});
 });
-

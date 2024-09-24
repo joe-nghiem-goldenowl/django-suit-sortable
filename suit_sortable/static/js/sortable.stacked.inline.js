@@ -1,9 +1,9 @@
-django.jQuery(function sortableStackedInline() {
+django.jQuery(function sortableStackedInline($) {
 
 	// restrain jQuery context to `SortableStackedInline` elements
-	var $context = window.$('.suit-sortable-stacked');
+	var $context = window.django.jQuery('.suit-sortable-stacked');
 	var $ = $context.find.bind($context);
-	
+
 	// hide the position column
 	$('th:contains("Position"), td.field-position').hide();
 
@@ -27,4 +27,3 @@ django.jQuery(function sortableStackedInline() {
 		},
 	});
 });
-
